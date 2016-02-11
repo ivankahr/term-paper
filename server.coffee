@@ -1,4 +1,5 @@
 express = require 'express'
+db = require './helpers/db'
 
 app = express()
 
