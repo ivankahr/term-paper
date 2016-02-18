@@ -1,8 +1,5 @@
-doctype
-html(lang="en")
-head
-    meta(charset="UTF-8")
-    title Document
-body
+extends layout
+
+block content
     for user in users
-        a.user-item(href="/login/#{user.id}")= user.name
+        a.user-item(href="/user/#{user.id}")= user.name

@@ -1,15 +1,16 @@
-db = require '../helpers/db'
+query = require '../helpers/query'
 
 exports.new = (name, cb) ->
-    db.query '''
+    query '''
     INSERT INTO users (name) VALUES (?)
-    ''', [name], (err, res) ->
-        return cb? null if err?
-        cb? res
+    ''', [name], cb
 
-exports.get = (cb) ->
-    db.query '''
+exports.getAll = (cb) ->
+    query '''
     SELECT * FROM users ORDER BY id
-    ''', (err, res) ->
-        return cb? null if err?
-        cb? res
+    ''', cb
+
+exports.get = (id, cb) ->
+    query '''
+    SELECT * FROM users WHERE id = ? ORDER BY id
+    ''', [id], cb
