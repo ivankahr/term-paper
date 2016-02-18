@@ -8,6 +8,7 @@ app.set 'view engine', 'jade'
 app.use bodyParser.urlencoded extended: true
 app.use bodyParser.json()
 app.use cookieParser()
+app.use express.static 'static'
 
 app.get '/', (req, res) ->
     users.getAll (users) ->
