@@ -11,8 +11,8 @@ router.post '/new/', (req, res) ->
             msg: 'Помилка створення користувача!'
             link:
                 title: 'Повторити введення'
-                href: '/user/new/'
-        else res.redirect "/user/#{saved.insertId}"
+                href: '/users/new/'
+        else res.redirect "/users/#{saved.insertId}"
 
 router.get '/:id/', (req, res) ->
     users.get req.params.id, (user) ->
