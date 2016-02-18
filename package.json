@@ -1,6 +1,6 @@
 {
   "name": "term-paper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "kursowa",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/ivankahr/term-paper#readme",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "coffee-script": "^1.10.0",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "mysql": "^2.10.2"

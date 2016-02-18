@@ -13,4 +13,4 @@ exports.getAll = (cb) ->
 exports.get = (id, cb) ->
     query '''
     SELECT * FROM users WHERE id = ? ORDER BY id
-    ''', [id], cb
+    ''', [id], (users) -> cb users[0]

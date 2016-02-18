@@ -6,5 +6,7 @@ module.exports = (query, params, cb) ->
         params = []
 
     db.query query, params, (err, res) ->
-        return cb? null if err?
-        cb? res
+        if err?
+            console.log err
+            cb? null
+        else cb? res

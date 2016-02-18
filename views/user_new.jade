@@ -1,0 +1,11 @@
+extends layout
+
+block title
+    | Створення користувача
+
+block content
+    form(action="/user/new/" method="POST")
+        span Ім'я
+        input(type="text" name="name")
+
+        input(type="submit")

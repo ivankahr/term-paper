@@ -1,8 +1,11 @@
-doctype
-html(lang="en")
-head
-    meta(charset="UTF-8")
-    title Server Error!
+- msg = msg || 'Помилка серверу! Перегляньте консольний вивід'
+- link = link || {title: 'На головну', href: '/'}
+extends layout
+
+block title
+    | Помилка
+
+block content
     style.
         body {
             background: #eee;
@@ -16,7 +19,9 @@ head
             padding: 20px;
             margin: 30px auto;
         }
-body
-    .error
-        h1 Error on server!
-        h2 Please check logs
+
+    body
+        .error
+            h1= msg
+            if link
+                a(href=link.href)= link.title
