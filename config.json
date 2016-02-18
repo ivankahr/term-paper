@@ -3,6 +3,7 @@
         "host": "localhost",
         "user": "root",
         "password": "root",
-        "database": "term-paper"
+        "database": "term-paper",
+        "multipleStatements": true
     }
 }
