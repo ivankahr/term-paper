@@ -1,0 +1,8 @@
+doctype
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    title Document
+body
+    for user in users
+        a.user-item(href="/login/#{user.id}")= user.name

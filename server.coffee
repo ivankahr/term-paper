@@ -1,9 +1,12 @@
 express = require 'express'
-db = require './helpers/db'
+users = require './models/users'
 
 app = express()
+app.set 'view engine', 'jade'
 
 app.get '/', (req, res) ->
-    res.send ivanka: 42
+    users.get (users) ->
+        if not users? then res.render 'error'
+        else res.render 'index', users: users
 
-app.listen 8080
+app.listen 4444

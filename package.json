@@ -1,6 +1,6 @@
 {
   "name": "term-paper",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "kursowa",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "dependencies": {
     "coffee-script": "^1.10.0",
     "express": "^4.13.4",
+    "jade": "^1.11.0",
     "mysql": "^2.10.2"
   }
 }
