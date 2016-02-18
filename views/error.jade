@@ -1,13 +1,12 @@
-- msg = msg || 'Помилка серверу! Перегляньте консольний вивід'
-- link = link || {title: 'На головну', href: '/'}
 extends layout
 
 block title
     | Помилка
 
 block content
-    body
-        .error
-            h1= msg
-            if link
-                a(href=link.href)= link.title
+    - msg = msg || 'Помилка серверу! Перегляньте консольний вивід'
+    - link = link || {title: 'На головну', href: '/'}
+
+    .error
+        h1= msg
+        a(href=link.href)= link.title
