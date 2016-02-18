@@ -5,7 +5,6 @@ cookieParser = require 'cookie-parser'
 
 app = express()
 app.set 'view engine', 'jade'
-app.use require './controllers'
 app.use express.static 'static'
 app.use bodyParser.urlencoded extended: true
 app.use bodyParser.json()
@@ -15,5 +14,7 @@ app.use stylus.middleware
   dest: 'static/css'
   debug: true
   force: true
+
+app.use require './controllers'
 
 app.listen 4444
