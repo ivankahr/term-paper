@@ -1,6 +1,6 @@
 {
   "name": "term-paper",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "kursowa",
   "main": "index.js",
   "scripts": {
