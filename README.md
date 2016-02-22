@@ -7,7 +7,7 @@
 
 * Node.js
 * Встановити сервер баз даних MySQL
-* `npm install -g coffee-script` - інтерпретатор мови CoffeeScript
+* `npm install -g coffee-script gulp` - інтерпретатор мови CoffeeScript
 * `npm install` - залежності проекту
 
 ## Підготовка БД
@@ -17,4 +17,5 @@
 
 ## Запуск
 
-`coffee server.coffee`
+* `gulp` (`gulp dev`) - збирання проекту (в режимі розробки)
+* `coffee server.coffee` - старт сервера
