@@ -1,8 +1,9 @@
 extends layout
 
-block content
-    a.add-user(href="/users/new/") Додати нового користувача
+block menu
+    a.menu-item(href="/users/new/") Додати користувача
 
-    .users-wrapper
+block content
+    .items-wrapper
         for user in users
-            a.user-item(href="/users/#{user.id}")= user.name
+            a.item(href="/users/#{user.id}")= user.name

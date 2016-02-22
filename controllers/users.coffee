@@ -16,7 +16,7 @@ router.post '/new/', (req, res) ->
 
 router.get '/:id/', (req, res) ->
     users.get req.params.id, (user) ->
-        if not user? then res.render 'error'
+        if not user? then res.render 'error', msg: 'Користувача не знайдено'
         else res.render 'user', user: user
 
 module.exports = router

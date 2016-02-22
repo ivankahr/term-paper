@@ -1,0 +1,9 @@
+extends layout
+
+block menu
+    a.menu-item(href="/tests/new/") Додати тест
+
+block content
+    .items-wrapper
+        for test in tests
+            a.item(href="/tests/#")= test.name
