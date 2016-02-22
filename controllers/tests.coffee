@@ -17,6 +17,6 @@ router.post '/new/', (req, res) ->
             link:
                 title: 'Повторити введення'
                 href: '/tests/new/'
-        else res.redirect "/tests/"
+        else res.redirect '/tests/'
 
 module.exports = router

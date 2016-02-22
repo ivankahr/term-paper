@@ -6,5 +6,5 @@ module.exports = (file, cb) ->
     db.query sql, (err, res) ->
         if err?
             console.log err
-            cb? null 
+            cb? null
         else cb? res
