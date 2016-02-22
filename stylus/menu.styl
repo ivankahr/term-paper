@@ -1,8 +1,17 @@
 .menu-wrapper
+    position fixed
+    top 0
+    left 0
     display flex
     width 100%
-    background #333
+    background $blue
+    height $menu-height
+    padding 0 $space*2
+    align-items center
+    box-shadow 0 0 $space*2 $blue
+    owerflow hidden
 
     .menu-item
-        color #eee
-        padding 10px
+        button-flat $blue
+        &:hover
+            background darken($blue, 10)

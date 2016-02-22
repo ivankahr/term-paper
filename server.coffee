@@ -5,6 +5,7 @@ cookieParser = require 'cookie-parser'
 app = express()
 app.set 'view engine', 'jade'
 app.use express.static 'static'
+app.use express.static 'bower_components'
 app.use bodyParser.urlencoded extended: true
 app.use bodyParser.json()
 app.use cookieParser()

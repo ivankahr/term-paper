@@ -1,7 +1,28 @@
+@require theme
+
 body
-    background #eee
+    padding $space $space*2
+    padding-top $menu-height + $space
+    background lighten($blue, 20)
+    color $white
+    height 100%
+    width 100%
+    position fixed
+    top 0
+    left 0
+    margin 0
+    align-items flex-start
+    -webkit-font-smoothing antialiased
     font-family Helvetica, Arial, sans-serif
 
-@require 'common'
-@require 'errors'
-@require 'menu'
+*
+    box-sizing border-box
+
+a
+    color $white
+
+@require buttons
+@require forms
+@require common
+@require errors
+@require menu

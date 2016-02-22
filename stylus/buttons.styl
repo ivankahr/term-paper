@@ -1,0 +1,36 @@
+button-flat($color)
+    transition all .1s linear
+    display inline-block
+    padding $space
+    border-radius $hspace
+    margin 0 $hspace
+    outline none
+    border none
+    text-transform lowercase
+    text-decoration none
+    font-weight 100
+    font-size $space*2
+    color $white
+    background $color
+
+    &:hover, &:focus
+        outline none
+        text-shadow 0 0 $hspace alpha($white, .3)
+        box-shadow 0 0 $hspace alpha($black, .3)
+
+    &:active, &.active
+        background darken($color, 5)
+        box-shadow inset 0 0 $space 0 alpha($black, .5)
+
+btn = {
+    red: $red
+    green: $green
+    blue: $blue
+}
+
+for key, value in btn
+    .button-{key}
+        button-flat value
+
+    button.button-{key}, input.button-{key}
+        font-weight 300

@@ -1,6 +1,21 @@
-.error
-    max-width 300px
-    background #bd1919
-    color #fff
-    padding 20px
-    margin 30px auto
+.error-wrapper
+    display flex
+    align-content center
+    align-items center
+    justify-content center
+    height 100%
+    width 100%
+
+    .error
+        max-width 300px
+        background $red
+        color $white
+        border-radius $space
+        padding $space*2
+
+    .error-title
+        display block
+        margin 0
+        margin $space 0
+        font-size $space*4
+        font-weight 100

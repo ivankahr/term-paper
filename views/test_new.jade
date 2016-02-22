@@ -4,8 +4,8 @@ block title
     | Створення тесту
 
 block content
-    form(action="/tests/new/" method="POST")
-        span Ім'я
-        input(type="text" name="name")
+    form.form(action="/tests/new/" method="POST"): .input-row
+        span.label Назва
+        input.input(type="text" name="name")
 
-        input(type="submit")
+        input.button-green(type="submit")

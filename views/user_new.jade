@@ -4,8 +4,8 @@ block title
     | Створення користувача
 
 block content
-    form(action="/users/new/" method="POST")
-        span Ім'я
-        input(type="text" name="name")
+    form.form(action="/users/new/" method="POST"): .input-row
+        label.label Ім'я
+        input.input(type="text" name="name")
 
-        input(type="submit")
+        input.button-green(type="submit")

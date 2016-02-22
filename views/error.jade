@@ -7,6 +7,6 @@ block content
     - msg = msg || 'Помилка серверу! Перегляньте консольний вивід'
     - link = link || {title: 'На головну', href: '/'}
 
-    .error
-        h1= msg
-        a(href=link.href)= link.title
+    .error-wrapper: .error
+        h1.error-title= msg
+        a.button-green(href=link.href)= link.title
