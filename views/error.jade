@@ -8,5 +8,5 @@ block content
     - link = link || {title: 'На головну', href: '/'}
 
     .error-wrapper: .error
-        h1.error-title= msg
-        a.button-green(href=link.href)= link.title
+        h1.error-title #[i.fa.fa-exclamation-circle] #{msg}
+        a.button-green(href=link.href) #[i.fa.fa-arrow-circle-left] #{link.title}

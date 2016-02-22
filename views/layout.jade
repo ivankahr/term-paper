@@ -3,6 +3,7 @@ html(lang="en")
 head
     meta(charset="UTF-8")
     link(rel="stylesheet", href="/css/main.css")
+    link(rel="stylesheet", href="/font-awesome/css/font-awesome.min.css")
     title
         block title
             | #
@@ -10,8 +11,14 @@ head
 
 body
     .menu-wrapper
-        a.menu-item(href="/") Користувачі
-        a.menu-item(href="/tests/") Тести
+        a.menu-item(href="/") #[i.fa.fa-user] Користувачі
+        a.menu-item(href="/tests/") #[i.fa.fa-tasks] Тести
         block menu
 
     block content
+    script.
+        var items = document.getElementsByClassName('menu-item');
+        var path = window.location.href;
+        [].forEach.call(items, function(el) {
+            if (el.href == path) el.classList.add('active');
+        });

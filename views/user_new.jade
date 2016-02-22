@@ -1,4 +1,4 @@
-extends layout
+extends users
 
 block title
     | Створення користувача
@@ -8,4 +8,4 @@ block content
         label.label Ім'я
         input.input(type="text" name="name")
 
-        input.button-green(type="submit")
+        button.button-green(type="submit") #[i.fa.fa-floppy-o] зберегти
