@@ -2,11 +2,15 @@ query = require '../helpers/query'
 questions = require './questions'
 
 exports.save = (obj, cb) ->
-    if obj.id then method = 'UPDATE'
-    else method = 'INSERT INTO'
+    if obj.id
+        method = 'UPDATE'
+        where = "WHERE id = #{obj.id}"
+    else
+        method = 'INSERT INTO'
+        where = ''
 
     query """
-    #{method} tests SET name = ?
+    #{method} tests SET name = ? #{where}
     """, [obj.name], (res) ->
         testId = obj.id or res.insertId
         question.test_id = testId for question in obj.questions
