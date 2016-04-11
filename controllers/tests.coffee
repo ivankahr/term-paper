@@ -11,7 +11,8 @@ router.get '/new/', (req, res) ->
     res.render 'test_new'
 
 router.post '/new/', (req, res) ->
-    tests.new req.body.name, (saved) ->
+    req.body.questions ?= []
+    tests.save req.body, (saved) ->
         if not saved? then res.render 'error',
             msg: 'Помилка створення тесту!'
             link:

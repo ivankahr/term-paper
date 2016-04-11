@@ -1,16 +1,29 @@
 query = require '../helpers/query'
+questions = require './questions'
 
-exports.new = (name, cb) ->
+exports.save = (obj, cb) ->
+    if obj.id then method = 'UPDATE'
+    else method = 'INSERT INTO'
+
+    query """
+    #{method} tests SET name = ?
+    """, [obj.name], (res) ->
+        testId = obj.id or res.insertId
+        question.test_id = testId for question in obj.questions
+
+        questions.saveAll obj.questions, cb
+
+exports.get = (id, cb) ->
     query '''
-    INSERT INTO tests (name) VALUES (?)
-    ''', [name], cb
+    SELECT * FROM tests WHERE id = ? ORDER BY id
+    ''', [id], (tests) -> cb tests[0]
 
 exports.getAll = (cb) ->
     query '''
     SELECT * FROM tests ORDER BY id
     ''', cb
 
-exports.get = (id, cb) ->
+exports.delete = (id, cb) ->
     query '''
-    SELECT * FROM tests WHERE id = ? ORDER BY id
-    ''', [id], (tests) -> cb tests[0]
+    DELETE * FROM tests WHERE id = ?
+    ''', [id], cb
