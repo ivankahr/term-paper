@@ -45,7 +45,7 @@ exports.saveAll = (arr, cb) ->
 
                 for question, i in withoutIds
                     for answer in question.answers
-                        answer.question_id = firstId + i 
+                        answer.question_id = firstId + i
                         answersList.push answer
                 cb null, res
 
@@ -66,7 +66,7 @@ exports.get = (id, cb) ->
     ''', [id], (questions) -> cb questions[0]
 
 exports.clearQuestions = (testId, except, cb) ->
-    exceptSegment = if except.length > 0 then db.format "AND id NOT IN ?", [except] else ''
+    exceptSegment = if except.length > 0 then "AND id NOT IN (#{except.join(',')})" else ''
     query """
     DELETE FROM questions WHERE test_id = ? #{exceptSegment}
     """, [testId], cb
