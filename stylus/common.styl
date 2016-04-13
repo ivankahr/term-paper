@@ -2,6 +2,15 @@
     display flex
 
     .item
-        button-flat $blue
-        padding 10px
+        position relative
         display inline-block
+
+        .delete
+            display none
+
+        &:hover .delete
+            display flex
+
+        .link
+            padding 10px
+            button-flat $blue

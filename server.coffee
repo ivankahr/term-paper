@@ -12,5 +12,4 @@ app.use cookieParser()
 
 app.use require './controllers'
 
-app.listen 4444, ->
-    console.log "Started on localhost:4444"
+app.listen 4444, -> console.log 'Started on localhost:4444'

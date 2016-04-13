@@ -22,10 +22,9 @@ exports.saveAll = (arr, cb) ->
         updated: (cb) ->
             return cb null, EmptyMess if withIds.length < 1
 
-            updateLines = (
-                for obj in withIds
-                    db.format "UPDATE questions SET content=? WHERE id=?", [obj.content, obj.id]
-                ).join ';\n'
+            updateLines = (for obj in withIds
+                db.format 'UPDATE questions SET content=? WHERE id=?', [obj.content, obj.id]
+            ).join ';\n'
 
             query updateLines, (res) ->
                 for question in withIds
@@ -39,8 +38,8 @@ exports.saveAll = (arr, cb) ->
 
             formated = for obj in withoutIds then [obj.content, obj.test_id]
             query '''
-            INSERT INTO questions (content, test_id) VALUES ?
-            ''', [formated], (res) ->
+                INSERT INTO questions (content, test_id) VALUES ?
+                ''', [formated], (res) ->
                 firstId = res.insertId
 
                 for question, i in withoutIds
@@ -57,16 +56,16 @@ exports.saveAll = (arr, cb) ->
 
 exports.getAll = (cb) ->
     query '''
-    SELECT * FROM questions ORDER BY id
-    ''', cb
+        SELECT * FROM questions ORDER BY id
+        ''', cb
 
 exports.get = (id, cb) ->
     query '''
-    SELECT * FROM questions WHERE id = ? ORDER BY id
-    ''', [id], (questions) -> cb questions[0]
+        SELECT * FROM questions WHERE id = ? ORDER BY id
+        ''', [id], (questions) -> cb questions[0]
 
 exports.clearQuestions = (testId, except, cb) ->
     exceptSegment = if except.length > 0 then "AND id NOT IN (#{except.join(',')})" else ''
     query """
-    DELETE FROM questions WHERE test_id = ? #{exceptSegment}
-    """, [testId], cb
+        DELETE FROM questions WHERE test_id = ? #{exceptSegment}
+        """, [testId], cb

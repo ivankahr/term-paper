@@ -9,4 +9,6 @@ block menu
 block content
     .items-wrapper
         for test in tests
-            a.item(href="/tests/#")= test.name
+            .item
+                a.link(href="/tests/#")= test.name
+                a.delete(href="/tests/delete/#{test.id}") #[i.fa.fa-remove]

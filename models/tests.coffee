@@ -10,8 +10,8 @@ exports.save = (obj, cb) ->
         where = ''
 
     query """
-    #{method} tests SET name = ? #{where}
-    """, [obj.name], (res) ->
+        #{method} tests SET name = ? #{where}
+        """, [obj.name], (res) ->
         testId = obj.id or res.insertId
         question.test_id = testId for question in obj.questions
 
@@ -19,15 +19,15 @@ exports.save = (obj, cb) ->
 
 exports.get = (id, cb) ->
     query '''
-    SELECT * FROM tests WHERE id = ? ORDER BY id
-    ''', [id], (tests) -> cb tests[0]
+        SELECT * FROM tests WHERE id = ? ORDER BY id
+        ''', [id], (tests) -> cb tests[0]
 
 exports.getAll = (cb) ->
     query '''
-    SELECT * FROM tests ORDER BY id
-    ''', cb
+        SELECT * FROM tests ORDER BY id
+        ''', cb
 
 exports.delete = (id, cb) ->
     query '''
-    DELETE * FROM tests WHERE id = ?
-    ''', [id], cb
+        DELETE FROM tests WHERE id = ?
+        ''', [id], cb

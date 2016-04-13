@@ -9,4 +9,6 @@ block menu
 block content
     .items-wrapper
         for user in users
-            a.item(href="/users/#{user.id}")= user.name
+            .item
+                a.link(href="/users/#{user.id}")= user.name
+                a.delete(href="/users/delete/#{user.id}") #[i.fa.fa-remove]
