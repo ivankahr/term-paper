@@ -16,9 +16,9 @@ body
         block menu
 
     block content
-    script.
-        var items = document.getElementsByClassName('menu-item');
-        var path = window.location.href;
-        [].forEach.call(items, function(el) {
-            if (el.href == path) el.classList.add('active');
-        });
+    script
+        :coffee-script
+            items = document.getElementsByClassName 'menu-item'
+            path = window.location.href
+            for el in items
+                el.classList.add 'active' if el.href is path

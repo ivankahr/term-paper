@@ -11,6 +11,7 @@ exports.saveAll = (arr, cb) ->
     withIds = []
     withoutIds = []
     for obj in arr
+        obj.correct = if obj.correct is 'on' then yes else no
         questionsIds[obj.question_id] = yes
         if obj.id?
             savedIds.push obj.id

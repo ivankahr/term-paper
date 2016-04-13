@@ -3,8 +3,20 @@
     margin auto
     width 500px
 
-.input-row
+.section
+    position relative
     display flex
+    flex-wrap wrap
+    margin-left 10px
+    border-left 2px solid $green
+    > .label
+        font-weight bold
+
+.input-row
+    padding 5px
+    display flex
+    width 100%
+    align-items center
 
 .label
     font-size $space*2
@@ -19,3 +31,6 @@
     border none
     outline none
     background $white
+
+.check
+    margin 10px
