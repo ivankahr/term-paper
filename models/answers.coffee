@@ -48,6 +48,7 @@ exports.get = (id, cb) ->
         ''', [id], (tests) -> cb tests[0]
 
 exports.getByQuestions = (ids, cb) ->
+    return cb [] if not ids? or ids.length < 1
     query """
         SELECT * FROM answers WHERE question_id IN (#{ids.join(',')}) ORDER BY id
         """, cb
