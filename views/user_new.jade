@@ -1,11 +1,5 @@
-extends users
+form.form(action="/users/new/" method="POST"): .input-row
+    label.label Ім'я
+    input.input(type="text" name="name")
 
-block title
-    | Створення користувача
-
-block content
-    form.form(action="/users/new/" method="POST"): .input-row
-        label.label Ім'я
-        input.input(type="text" name="name")
-
-        button.button-green(type="submit") #[i.fa.fa-floppy-o] зберегти
+    button.button-green(type="submit") #[i.fa.fa-floppy-o] зберегти

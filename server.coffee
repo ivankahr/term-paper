@@ -10,6 +10,7 @@ app.use bodyParser.urlencoded extended: true
 app.use bodyParser.json()
 app.use cookieParser()
 
-app.use require './controllers'
+app.use '/api', require './controllers'
+app.get '/', (req, res) -> res.render 'index'
 
 app.listen 4444, -> console.log 'Started on localhost:4444'

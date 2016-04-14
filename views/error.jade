@@ -1,12 +1,6 @@
-extends layout
+- msg = 'Помилка серверу! Перегляньте консольний вивід'
+- link = {title: 'На головну', href: '/'}
 
-block title
-    | Помилка
-
-block content
-    - msg = msg || 'Помилка серверу! Перегляньте консольний вивід'
-    - link = link || {title: 'На головну', href: '/'}
-
-    .error-wrapper: .error
-        h1.error-title #[i.fa.fa-exclamation-circle] #{msg}
-        a.button-green(href=link.href) #[i.fa.fa-arrow-circle-left] #{link.title}
+.error-wrapper: .error
+    h1.error-title #[i.fa.fa-exclamation-circle] #{msg}
+    a.button-green(href=link.href) #[i.fa.fa-arrow-circle-left] #{link.title}

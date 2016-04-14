@@ -1,14 +1,6 @@
-extends layout
+//- a.menu-item(href="/tests/new/") #[i.fa.fa-plus-circle] Додати тест
 
-block title
-    | Тести
-
-block menu
-    a.menu-item(href="/tests/new/") #[i.fa.fa-plus-circle] Додати тест
-
-block content
-    .items-wrapper
-        for test in tests
-            .item
-                a.link(href="/tests/#")= test.name
-                a.delete(href="/tests/delete/#{test.id}") #[i.fa.fa-remove]
+.items-wrapper
+    .item(ng-repeat="test in tests")
+            a.link(href="/tests/#") {{test.name}}
+            a.delete(href="/tests/delete/{{test.id}}") #[i.fa.fa-remove]

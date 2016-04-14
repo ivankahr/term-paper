@@ -1,0 +1,16 @@
+doctype
+html(lang="en" ng-app="app")
+    head
+        base(href="/")
+        meta(charset="UTF-8")
+        link(rel="stylesheet", href="/main.css")
+        link(rel="stylesheet", href="/font-awesome/css/font-awesome.min.css")
+        title Система тестування
+
+    body
+        .menu-wrapper
+            a.menu-item(href="/") #[i.fa.fa-user] Користувачі
+            a.menu-item(href="/tests/") #[i.fa.fa-tasks] Тести
+
+        div(ng-view)
+        script(src="/min.js")

@@ -1,28 +1,22 @@
-extends tests
+form.form(action="/tests/new/" method="POST")
+    .input-row
+        span.label Назва
+        input.input(type="text" name="name")
 
-block title
-    | Створення тесту
+    .section.questions-list
+        span.label Список питань
+        button.add-button(onclick="addQuestion()") #[i.fa.fa-plus] Питання
 
-block content
-    form.form(action="/tests/new/" method="POST")
         .input-row
-            span.label Назва
-            input.input(type="text" name="name")
+            span.label Питання
+            input.input(type="text" name="questions[0][content]")
 
-        .section.questions-list
-            span.label Список питань
-            button.add-button(onclick="addQuestion()") #[i.fa.fa-plus] Питання
+        .section
+            span.label Відповіді до питання
+            button.add-button(onclick="addAnswer()") #[i.fa.fa-plus] Відповідь
 
             .input-row
-                span.label Питання
-                input.input(type="text" name="questions[0][content]")
+                input.check(type="checkbox" name="questions[0][answers][0][correct]")
+                input.input(type="text" name="questions[0][answers][0][content]")
 
-            .section
-                span.label Відповіді до питання
-                button.add-button(onclick="addAnswer()") #[i.fa.fa-plus] Відповідь
-
-                .input-row
-                    input.check(type="checkbox" name="questions[0][answers][0][correct]")
-                    input.input(type="text" name="questions[0][answers][0][content]")
-
-        .input-row: button.button-green(type="submit") #[i.fa.fa-floppy-o] зберегти
+    .input-row: button.button-green(type="submit") #[i.fa.fa-floppy-o] зберегти

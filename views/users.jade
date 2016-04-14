@@ -1,14 +1,6 @@
-extends layout
+//- a.menu-item(href="/users/new/") #[i.fa.fa-plus-circle] Додати користувача
 
-block title
-    | Користувачі
-
-block menu
-    a.menu-item(href="/users/new/") #[i.fa.fa-plus-circle] Додати користувача
-
-block content
-    .items-wrapper
-        for user in users
-            .item
-                a.link(href="/users/#{user.id}")= user.name
-                a.delete(href="/users/delete/#{user.id}") #[i.fa.fa-remove]
+.items-wrapper
+    .item(ng-repeat="user in users")
+        a.link(href="/users/{{user.id}}") {{user.name}}
+        a.delete(href="/users/delete/{{user.id}}") #[i.fa.fa-remove]
