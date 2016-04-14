@@ -7,10 +7,12 @@
         margin 5px
 
         .delete, .edit
-            display none
+            opacity 0
+            visibility hidden
 
         &:hover .delete, &:hover .edit
-            display flex
+            visibility visible
+            opacity 1
 
         .link
             button-flat $blue
