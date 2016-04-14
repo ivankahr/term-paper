@@ -1,6 +1,6 @@
-//- a.menu-item(href="/users/new/") #[i.fa.fa-plus-circle] Додати користувача
+a.menu-item(href="/users/add/") #[i.fa.fa-plus-circle] Додати користувача
 
 .items-wrapper
     .item(ng-repeat="user in users")
         a.link(href="/users/{{user.id}}") {{user.name}}
-        a.delete(href="/users/delete/{{user.id}}") #[i.fa.fa-remove]
+        button.delete(ng-click="delete(user.id)") #[i.fa.fa-remove]

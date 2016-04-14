@@ -1,6 +1,13 @@
 UsersCtrl = ($scope, UsersService) ->
-    UsersService.getAll().then (users) ->
-        $scope.users = users.data
+    $scope.reload = ->
+        UsersService.getAll().then (users) ->
+            $scope.users = users.data
+
+    $scope.delete = (id) ->
+        UsersService.delete(id).then (res) ->
+            $scope.reload()
+
+    $scope.reload()
     $scope
 
 angular

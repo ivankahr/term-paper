@@ -31,6 +31,7 @@ gulp.task 'dev', ['default', 'watch']
 gulp.task 'watch', ->
     gulp.watch coffeeFiles, ['coffee-lint']
     gulp.watch 'frontend/*.coffee', ['js']
+    gulp.watch 'views/*.jade', ['jade']
     gulp.watch 'stylus/**/*.styl', ['stylus-lint', 'stylus']
 
 gulp.task 'stylus-lint', ->
