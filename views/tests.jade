@@ -1,6 +1,7 @@
-//- a.menu-item(href="/tests/new/") #[i.fa.fa-plus-circle] Додати тест
+a.menu-item(href="/tests/add/") #[i.fa.fa-plus-circle] Додати тест
 
 .items-wrapper
     .item(ng-repeat="test in tests")
-            a.link(href="/tests/#") {{test.name}}
-            a.delete(href="/tests/delete/{{test.id}}") #[i.fa.fa-remove]
+            a.link(href="/tests/{{test.id}}") {{test.name}}
+            a.delete(ng-click="delete(test.id)") #[i.fa.fa-remove]
+            a.edit(href="/tests/edit/{{test.id}}") #[i.fa.fa-pencil]

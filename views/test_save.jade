@@ -1,0 +1,23 @@
+.form
+    .input-row
+        span.label Назва
+        input.input(type="text" ng-model="test.name")
+
+    .section.questions-list
+        span.label Список питань
+        button.add-button(ng-click="addQuestion()") #[i.fa.fa-plus] Питання
+
+        div.separated(ng-repeat="(index, question) in test.questions")
+            .input-row
+                span.label Питання
+                input.input(type="text" ng-model="question.content")
+
+            .section
+                span.label Відповіді до питання
+                button.add-button(ng-click="addAnswer(index)") #[i.fa.fa-plus] Відповідь
+
+                .input-row(ng-repeat="answer in question.answers")
+                    input.check(type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="answer.correct")
+                    input.input(type="text" ng-model="answer.content")
+
+    .input-row: button.button-green(ng-click="save()") #[i.fa.fa-floppy-o] зберегти

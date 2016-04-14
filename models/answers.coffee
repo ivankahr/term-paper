@@ -11,7 +11,6 @@ exports.saveAll = (arr, cb) ->
     withIds = []
     withoutIds = []
     for obj in arr
-        obj.correct = if obj.correct is 'on' then yes else no
         questionsIds[obj.question_id] = yes
         if obj.id?
             savedIds.push obj.id
@@ -48,10 +47,10 @@ exports.get = (id, cb) ->
         SELECT * FROM answers WHERE id = ?
         ''', [id], (tests) -> cb tests[0]
 
-exports.getAll = (cb) ->
-    query '''
-        SELECT * FROM answers ORDER BY id
-        ''', cb
+exports.getByQuestions = (ids, cb) ->
+    query """
+        SELECT * FROM answers WHERE question_id IN (#{ids.join(',')}) ORDER BY id
+        """, cb
 
 exports.clearAnswers = (questionsIds, except, cb) ->
     exceptSegment = if except.length > 0 then "AND id NOT IN (#{except.join(',')})" else ''

@@ -20,7 +20,11 @@ exports.save = (obj, cb) ->
 exports.get = (id, cb) ->
     query '''
         SELECT * FROM tests WHERE id = ? ORDER BY id
-        ''', [id], (tests) -> cb tests[0]
+        ''', [id], (tests) ->
+            test = tests[0]
+            questions.getByTest test.id, (questions) ->
+                test.questions = questions
+                cb test
 
 exports.getAll = (cb) ->
     query '''

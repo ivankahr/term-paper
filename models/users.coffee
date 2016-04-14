@@ -1,9 +1,16 @@
 query = require '../helpers/query'
 
-exports.new = (name, cb) ->
-    query '''
-        INSERT INTO users (name) VALUES (?)
-        ''', [name], cb
+exports.save = (obj, cb) ->
+    if obj.id
+        method = 'UPDATE'
+        where = "WHERE id = #{obj.id}"
+    else
+        method = 'INSERT INTO'
+        where = ''
+
+    query """
+        #{method} users SET name = ? #{where}
+        """, [obj.name], cb
 
 exports.getAll = (cb) ->
     query '''

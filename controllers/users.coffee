@@ -6,7 +6,7 @@ router.post '/save/', (req, res) ->
     SaveError = error: 'Помилка створення користувача!'
     return res.send SaveError if req.body.name?.length < 1
 
-    users.new req.body.name, (saved) ->
+    users.save req.body, (saved) ->
         if not saved? then res.send SaveError
         else res.send saved
 
