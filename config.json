@@ -1,4 +1,5 @@
 {
+    "port": 4444,
     "db": {
         "host": "localhost",
         "user": "root",

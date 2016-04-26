@@ -32,4 +32,4 @@ app.get '*', (req, res) ->
                 res.render 'login'
     else res.render 'login'
 
-app.listen 4444, -> console.log 'Started on localhost:4444'
+app.listen config.port, -> console.log 'Started on localhost:4444'
