@@ -13,6 +13,6 @@ mixin indicator()
 
         label.input-row(ng-repeat="answer in question.answers")
             input.check(type="radio" ng-value="answer.id" ng-model="question.answer")
-            spane.label(type="text") {{answer.content}}
+            spane.label(type="text") {{answer.content}} #[i.fa.fa-check(ng-if="answer.correct && checked")]
 
-    .input-row: button.button-green.right-menu-item(ng-click="check()") #[i.fa.fa-check] перевірити
+    .input-row(ng-if="!checked"): button.button-green.right-menu-item(ng-click="check()") #[i.fa.fa-check] перевірити
