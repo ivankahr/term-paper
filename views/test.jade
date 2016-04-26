@@ -6,12 +6,12 @@ mixin indicator()
 .form
     h1 Назва {{test.name}}
 
-    .separated.section(ng-repeat="question in test.questions")
+    .questions-list(ng-repeat="question in test.questions")
         .input-row
             +indicator()
             b.label {{question.content}}
 
-        label.input-row(ng-repeat="answer in question.answers")
+        .separated: label.input-row(ng-repeat="answer in question.answers")
             input.check(type="radio" ng-value="answer.id" ng-model="question.answer")
             spane.label(type="text") {{answer.content}} #[i.fa.fa-check(ng-if="answer.correct && checked")]
 
