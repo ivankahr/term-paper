@@ -44,7 +44,7 @@ exports.deleteByAnswers = (userId, ansIds, cb) ->
     return cb message: 'No answers in array' if not ansIds? or ansIds.length < 1
 
     query """
-        DELETE FROM results WHERE user_id = ? answer_id IN (#{ansIds.join(',')})
+        DELETE FROM results WHERE user_id = ? AND answer_id IN (#{ansIds.join(',')})
         """, [userId] ,cb
 
 exports.getByUser = (userId, cb) ->
