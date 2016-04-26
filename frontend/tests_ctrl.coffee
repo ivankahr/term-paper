@@ -8,7 +8,6 @@ TestsCtrl = ($scope, TestsService) ->
             $scope.reload()
 
     $scope.reload()
-    $scope
 
 angular
     .module('app')

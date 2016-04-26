@@ -7,8 +7,9 @@ UsersCtrl = ($scope, UsersService) ->
         UsersService.delete(id).then (res) ->
             $scope.reload()
 
-    $scope.reload()
-    $scope
+    $scope.logout = ->
+        UsersService.logout().then ->
+            window.location.reload()
 
 angular
     .module('app')

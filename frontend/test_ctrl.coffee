@@ -8,8 +8,6 @@ TestCtrl = ($scope, $location, $routeParams, TestsService) ->
         TestsService.delete(id).then (res) ->
             $location.path '/'
 
-    $scope
-
 angular
     .module('app')
     .controller('TestCtrl', ['$scope', '$location', '$routeParams', 'TestsService', TestCtrl])

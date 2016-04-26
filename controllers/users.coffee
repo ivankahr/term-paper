@@ -24,4 +24,13 @@ router.get '/delete/:id/', (req, res) ->
     users.delete req.params.id, (result) ->
         res.send result
 
+router.post '/login/', (req, res) ->
+    users.getByName req.body.name, (user) ->
+        req.session.uid = user.id if user?
+        res.redirect '/'
+
+router.get '/logout/', (req, res) ->
+    delete req.session.uid
+    res.send data: yes
+
 module.exports = router

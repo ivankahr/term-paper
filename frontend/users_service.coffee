@@ -19,6 +19,11 @@ UsersService = ($http) ->
             .then (res) ->
                 res.data
 
+    logout: ->
+        $http.get('/api/users/logout/')
+            .then (res) ->
+                res.data
+
 angular
     .module('app')
     .service('UsersService', UsersService)

@@ -8,8 +8,6 @@ UserCtrl = ($scope, $location, $routeParams, UsersService) ->
         UsersService.delete(id).then (res) ->
             $location.path '/'
 
-    $scope
-
 angular
     .module('app')
     .controller('UserCtrl', ['$scope', '$location', '$routeParams', 'UsersService', UserCtrl])

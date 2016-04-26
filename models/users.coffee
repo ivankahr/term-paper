@@ -22,6 +22,11 @@ exports.get = (id, cb) ->
         SELECT * FROM users WHERE id = ? ORDER BY id
         ''', [id], (users) -> cb users[0]
 
+exports.getByName = (name, cb) ->
+    query '''
+        SELECT * FROM users WHERE name = ? ORDER BY id
+        ''', [name], (users) -> cb users[0]
+
 exports.delete = (id, cb) ->
     query '''
         DELETE FROM users WHERE id = ?

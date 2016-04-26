@@ -1,7 +1,7 @@
-a.menu-item(href="/users/add/") #[i.fa.fa-plus-circle] Додати користувача
-
-.items-wrapper
+.items-wrapper(ng-init="reload()")
     .item(ng-repeat="user in users")
         a.link(href="/users/{{user.id}}") {{user.name}}
         button.delete(ng-click="delete(user.id)") #[i.fa.fa-remove]
         a.edit(href="/users/edit/{{user.id}}") #[i.fa.fa-pencil]
+
+    a.item.button-green(href="/users/add/") #[i.fa.fa-plus-circle] Додати користувача

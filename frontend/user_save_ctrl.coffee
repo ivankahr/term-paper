@@ -12,8 +12,6 @@ UserSaveCtrl = ($scope, $location, $routeParams, UsersService) ->
         UsersService.save($scope.user).then (res) ->
             $location.path '/'
 
-    $scope
-
 angular
     .module('app')
     .controller('UserSaveCtrl', [
