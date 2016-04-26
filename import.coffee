@@ -9,4 +9,8 @@ exec path.join(__dirname, './sql/remove.sql'), (res) ->
     exec path.join(__dirname, './sql/create.sql'), (res) ->
         if not res? then console.log 'CREATE ERROR!'
         else console.log 'CREATED OK!'
-        db.end()
+
+        exec path.join(__dirname, './sql/import.sql'), (res) ->
+            if not res? then console.log 'IMPORT ERROR!'
+            else console.log 'IMPORTED OK!'
+            db.end()
