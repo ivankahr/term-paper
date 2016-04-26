@@ -47,6 +47,18 @@ exports.get = (id, cb) ->
         SELECT * FROM answers WHERE id = ?
         ''', [id], (tests) -> cb tests[0]
 
+exports.getByIds = (ids, cb) ->
+    query """
+        SELECT * FROM answers WHERE id IN (#{ids.join(',')})
+        """, cb
+
+exports.getAnotherAnswers = (answersIds, cb) ->
+    exports.getByIds answersIds, (_answers) ->
+        questionsIds = for item in _answers then item.question_id
+        query """
+            SELECT * FROM answers WHERE question_id IN (#{questionsIds.join(',')})
+            """, cb
+
 exports.getByQuestions = (ids, cb) ->
     return cb [] if not ids? or ids.length < 1
     query """

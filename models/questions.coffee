@@ -75,6 +75,11 @@ exports.get = (id, cb) ->
         SELECT * FROM questions WHERE id = ? ORDER BY id
         ''', [id], (questions) -> cb questions[0]
 
+exports.getByIds = (ids, cb) ->
+    query """
+        SELECT * FROM questions WHERE id IN (#{ids.join(',')})
+        """, cb
+
 exports.clearQuestions = (testId, except, cb) ->
     exceptSegment = if except.length > 0 then "AND id NOT IN (#{except.join(',')})" else ''
     query """

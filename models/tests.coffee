@@ -26,6 +26,11 @@ exports.get = (id, cb) ->
             test.questions = questions
             cb test
 
+exports.getByIds = (ids, cb) ->
+    query """
+        SELECT * FROM tests WHERE id IN (#{ids.join(',')})
+        """, cb
+
 exports.getAll = (cb) ->
     query '''
         SELECT * FROM tests ORDER BY id

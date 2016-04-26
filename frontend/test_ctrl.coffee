@@ -1,4 +1,5 @@
-TestCtrl = ($scope, $location, $routeParams, TestsService) ->
+TestCtrl = ($scope
+        $location, $routeParams, TestsService, ResultsService) ->
     $scope.id = $routeParams.id
     $scope.checked = no
 
@@ -6,14 +7,27 @@ TestCtrl = ($scope, $location, $routeParams, TestsService) ->
         $scope.test = test.data
 
     $scope.check = ->
+        result = []
         for question in $scope.test.questions
+            result.push answer_id: question.answer
+            return if not question.answer?
+
             question.correct = no
             for answer in question.answers
                 if question.answer is answer.id
                     question.correct = yes if answer.correct
                     break
+
         $scope.checked = yes
+        ResultsService.save(result)
 
 angular
     .module('app')
-    .controller('TestCtrl', ['$scope', '$location', '$routeParams', 'TestsService', TestCtrl])
+    .controller 'TestCtrl', [
+        '$scope'
+        '$location'
+        '$routeParams'
+        'TestsService'
+        'ResultsService'
+        TestCtrl
+    ]
