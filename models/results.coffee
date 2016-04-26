@@ -6,7 +6,6 @@ tests = require './tests'
 format = (answers, questions, tests) ->
     testsByIds = {}
     questionsByIds = {}
-    answersByIds = {}
 
     for test in tests
         test.questions = {}
@@ -18,38 +17,35 @@ format = (answers, questions, tests) ->
         testsByIds[question.test_id].questions[question.id] = question
 
     for answer in answers
-        answer.selected = no
-        answersByIds[answer.id] = answer
-        questionsByIds[answer.question_id].answers[answer.id] = answer
+        questionsByIds[answer.question_id].answer = answer
 
     for tid, test of testsByIds
         test.questions = for qid, question of test.questions
-            for aid, answer of question.answers
-                question.answer = answer
-                break
             question
         test
 
 
-exports.save = (arr, cb) ->
+exports.save = (userId, arr, cb) ->
     formated = []
     answersIds = []
     for item in arr
-        formated.push [item.user_id, item.answer_id]
+        formated.push [userId, item.answer_id]
         answersIds.push item.answer_id
 
     answers.getAnotherAnswers answersIds, (_answers) ->
         ids = for item in _answers then item.id
 
-        exports.deleteByAnswers ids, ->
+        exports.deleteByAnswers userId, ids, ->
             query """
                 INSERT INTO results (user_id, answer_id) VALUES ?
                 """, [formated], cb
 
-exports.deleteByAnswers = (ids, cb) ->
+exports.deleteByAnswers = (userId, ansIds, cb) ->
+    return cb message: 'No answers in array' if not ansIds? or ansIds.length < 1
+
     query """
-        DELETE FROM results WHERE answer_id IN (#{ids.join(',')})
-        """, cb
+        DELETE FROM results WHERE user_id = ? answer_id IN (#{ansIds.join(',')})
+        """, [userId] ,cb
 
 exports.getByUser = (userId, cb) ->
     query '''

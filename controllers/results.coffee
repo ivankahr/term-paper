@@ -11,8 +11,7 @@ router.post '/save/', (req, res) ->
     SaveError = error: 'Помилка збереження результату!'
     return res.send SaveError if req.body.length < 1
 
-    item.user_id = req.session.uid for item in req.body
-    results.save req.body, (saved) ->
+    results.save req.session.uid, req.body, (saved) ->
         if not saved? then res.send SaveError
         else res.send saved
 
