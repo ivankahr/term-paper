@@ -11,13 +11,15 @@
             .input-row
                 span.label Питання
                 input.input(type="text" ng-model="question.content")
+                button.button-red(ng-click="removeQuestion(index)") #[i.fa.fa-remove]
 
             .section
                 span.label Відповіді до питання
                 button.add-button(ng-click="addAnswer(index)") #[i.fa.fa-plus] Відповідь
 
-                .input-row(ng-repeat="answer in question.answers")
-                    input.check(type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="answer.correct")
+                .input-row(ng-repeat="(ansIndex, answer) in question.answers")
+                    input.check(type="radio" ng-value="ansIndex" ng-model="question.answer")
                     input.input(type="text" ng-model="answer.content")
+                    button.button-red(ng-click="removeAnswer(index, ansIndex)") #[i.fa.fa-remove]
 
     .input-row: button.button-green(ng-click="save()") #[i.fa.fa-floppy-o] зберегти

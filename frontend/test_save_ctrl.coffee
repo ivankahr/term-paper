@@ -3,6 +3,13 @@ TestSaveCtrl = ($scope, $location, $routeParams, TestsService) ->
 
     if $scope.id? then TestsService.get($scope.id).then (test) ->
         $scope.test = test.data
+
+        for question in $scope.test.questions
+            for answer, i in question.answers
+                if answer.correct
+                    question.answer = i
+                    break
+
     else $scope.test = questions: [answers: [correct: no]]
 
     $scope.delete = ->
@@ -12,14 +19,23 @@ TestSaveCtrl = ($scope, $location, $routeParams, TestsService) ->
     $scope.addQuestion = ->
         $scope.test.questions.push answers: [correct: no]
 
+    $scope.removeQuestion = (index) ->
+        $scope.test.questions.splice(index, 1)
+
+    $scope.removeAnswer = (questionIndex, index) ->
+        $scope.test.questions[questionIndex].answers.splice(index, 1)
+
     $scope.addAnswer = (index) ->
         $scope.test.questions[index].answers.push correct: no
 
     $scope.save = ->
+        for question in $scope.test.questions
+            for answer, i in question.answers
+                if i is question.answer then answer.correct = yes
+                else answer.correct = no
+
         TestsService.save($scope.test).then (res) ->
             $location.path '/tests/'
-
-    $scope
 
 angular
     .module('app')

@@ -58,17 +58,17 @@ exports.getByTest = (testId, cb) ->
     query '''
         SELECT * FROM questions WHERE test_id = ? ORDER BY id
         ''', [testId], (questions) ->
-            ids = []
-            byIds = {}
+        ids = []
+        byIds = {}
 
-            for question in questions
-                question.answers = []
-                byIds[question.id] = question
-                ids.push question.id
+        for question in questions
+            question.answers = []
+            byIds[question.id] = question
+            ids.push question.id
 
-            answers.getByQuestions ids, (answers) ->
-                byIds[answer.question_id].answers.push answer for answer in answers
-                cb (question for id, question of byIds)
+        answers.getByQuestions ids, (answers) ->
+            byIds[answer.question_id].answers.push answer for answer in answers
+            cb (question for id, question of byIds)
 
 exports.get = (id, cb) ->
     query '''

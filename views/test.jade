@@ -1,1 +1,18 @@
-h1 Назва {{test.name}}
+mixin indicator()
+    .indicator(ng-if="checked")
+        i.fa.fa-check(ng-if="question.correct")
+        i.fa.fa-remove(ng-if="!question.correct")
+
+.form
+    h1 Назва {{test.name}}
+
+    .separated.section(ng-repeat="question in test.questions")
+        .input-row
+            +indicator()
+            b.label {{question.content}}
+
+        label.input-row(ng-repeat="answer in question.answers")
+            input.check(type="radio" ng-value="answer.id" ng-model="question.answer")
+            spane.label(type="text") {{answer.content}}
+
+    .input-row: button.button-green.right-menu-item(ng-click="check()") #[i.fa.fa-check] перевірити
