@@ -1,5 +1,6 @@
 TestSaveCtrl = ($scope, $location, $routeParams, TestsService) ->
     $scope.id = $routeParams.id
+    $scope.initialized = no
 
     if $scope.id? then TestsService.get($scope.id).then (test) ->
         $scope.test = test.data
@@ -10,7 +11,10 @@ TestSaveCtrl = ($scope, $location, $routeParams, TestsService) ->
                     question.answer = i
                     break
 
-    else $scope.test = questions: [answers: [correct: no]]
+        $scope.initialized = yes
+    else
+        $scope.test = questions: [answers: [correct: no]]
+        $scope.initialized = yes
 
     $scope.delete = ->
         TestsService.delete(id).then (res) ->

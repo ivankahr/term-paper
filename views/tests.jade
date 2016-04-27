@@ -1,7 +1,7 @@
-.items-wrapper
+.items-wrapper.initiable(ng-class="{show: initialized}")
     .item(ng-repeat="test in tests")
             a.link(href="/tests/{{test.id}}") {{test.name}}
             a.delete(ng-click="delete(test.id)") #[i.fa.fa-remove]
             a.edit(href="/tests/edit/{{test.id}}") #[i.fa.fa-pencil]
 
-    a.item.button-green(href="/tests/add/") #[i.fa.fa-plus-circle] Додати тест
+    a.item.button-green(href="/tests/add/") #[i.fa.fa-plus-circle] додати тест

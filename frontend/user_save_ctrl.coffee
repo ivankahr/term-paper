@@ -1,8 +1,10 @@
 UserSaveCtrl = ($scope, $location, $routeParams, UsersService) ->
     $scope.id = $routeParams.id
+    $scope.initialized = no
 
     if $scope.id? then UsersService.get($scope.id).then (user) ->
         $scope.user = user.data
+        $scope.initialized = yes
 
     $scope.delete = ->
         UsersService.delete(id).then (res) ->

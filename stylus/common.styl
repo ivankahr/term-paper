@@ -19,6 +19,15 @@
             padding 10px
             margin 0
 
+.initiable
+    visibility hidden
+    opacity 0
+    transition opacity .2s ease-in
+
+    &.show
+        visibility visible
+        opacity 1
+
 .indicator
     background #fff
     border-radius 50%

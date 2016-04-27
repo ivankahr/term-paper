@@ -2,9 +2,11 @@ TestCtrl = ($scope
         $location, $routeParams, TestsService, ResultsService) ->
     $scope.id = $routeParams.id
     $scope.checked = no
+    $scope.initialized = no
 
     TestsService.get($scope.id).then (test) ->
         $scope.test = test.data
+        $scope.initialized = yes
 
     $scope.check = ->
         result = []

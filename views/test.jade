@@ -3,8 +3,8 @@ mixin indicator()
         i.fa.fa-check(ng-if="question.correct")
         i.fa.fa-remove(ng-if="!question.correct")
 
-.form
-    h1 Назва {{test.name}}
+.form.initiable(ng-class="{show: initialized}")
+    h1 {{test.name}}
 
     .questions-list(ng-repeat="question in test.questions")
         .input-row
