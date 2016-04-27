@@ -1,4 +1,4 @@
-INSERT INTO users SET name = 'root';
+INSERT INTO users SET name = 'root', admin = 1;
 INSERT INTO tests SET name = 'first test';
 INSERT INTO questions (content, test_id) VALUES ('first question?', 1);
 INSERT INTO answers (content, correct, question_id) VALUES

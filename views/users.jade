@@ -1,7 +1,7 @@
 .items-wrapper.initiable(ng-init="reload()" ng-class="{show: initialized}")
     .item(ng-repeat="user in users")
         a.link(href="/users/{{user.id}}") {{user.name}}
-        button.delete(ng-click="delete(user.id)") #[i.fa.fa-remove]
-        a.edit(href="/users/edit/{{user.id}}") #[i.fa.fa-pencil]
+        button.delete(ng-click="delete(user.id)" ng-if="current.admin") #[i.fa.fa-remove]
+        a.edit(href="/users/edit/{{user.id}}" ng-if="canEdit(user)") #[i.fa.fa-pencil]
 
-    a.item.button-green(href="/users/add/") #[i.fa.fa-plus-circle] додати користувача
+    a.item.button-green(href="/users/add/" ng-if="current.admin") #[i.fa.fa-plus-circle] додати користувача

@@ -1,5 +1,6 @@
-TestsCtrl = ($scope, TestsService) ->
+TestsCtrl = ($scope, TestsService, UsersService) ->
     $scope.initialized = no
+    $scope.user = UsersService.current
 
     $scope.reload = ->
         TestsService.getAll().then (tests) ->
@@ -14,4 +15,4 @@ TestsCtrl = ($scope, TestsService) ->
 
 angular
     .module('app')
-    .controller('TestsCtrl', ['$scope', 'TestsService', TestsCtrl])
+    .controller('TestsCtrl', ['$scope', 'TestsService', 'UsersService', TestsCtrl])

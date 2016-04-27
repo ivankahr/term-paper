@@ -60,7 +60,7 @@ gulp.task 'stylus', ->
         .pipe gulp.dest 'static'
 
 gulp.task 'jade', ->
-    gulp.src ['views/*.jade', '!views/index.jade']
+    gulp.src ['views/*.jade', '!views/index.jade', '!views/login.jade']
         .pipe plumber()
         .pipe jade()
         .pipe gulp.dest 'static/views'

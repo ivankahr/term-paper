@@ -36,16 +36,16 @@ exports.save = (userId, arr, cb) ->
         ids = for item in _answers then item.id
 
         exports.deleteByAnswers userId, ids, ->
-            query """
+            query '''
                 INSERT INTO results (user_id, answer_id) VALUES ?
-                """, [formated], cb
+                ''', [formated], cb
 
 exports.deleteByAnswers = (userId, ansIds, cb) ->
     return cb message: 'No answers in array' if not ansIds? or ansIds.length < 1
 
     query """
         DELETE FROM results WHERE user_id = ? AND answer_id IN (#{ansIds.join(',')})
-        """, [userId] ,cb
+        """, [userId], cb
 
 exports.getByUser = (userId, cb) ->
     query '''

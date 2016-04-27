@@ -1,6 +1,7 @@
 UserSaveCtrl = ($scope, $location, $routeParams, UsersService) ->
     $scope.id = $routeParams.id
     $scope.initialized = no
+    $scope.current = UsersService.current
 
     if $scope.id?
         UsersService.get($scope.id).then (user) ->

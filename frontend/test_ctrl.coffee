@@ -1,5 +1,4 @@
-TestCtrl = ($scope
-        $location, $routeParams, TestsService, ResultsService) ->
+TestCtrl = ($scope, $location, $routeParams, TestsService, ResultsService) ->
     $scope.id = $routeParams.id
     $scope.checked = no
     $scope.initialized = no

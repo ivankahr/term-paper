@@ -1,5 +1,10 @@
-form.form.initiable(ng-class="{show: initialized}"): .input-row
-    label.label Ім'я
-    input.input(type="text" ng-model="user.name")
+form.form.initiable(ng-class="{show: initialized}")
+    .input-row
+        label.label Ім'я
+        input.input(type="text" ng-model="user.name")
 
-    button.button-green(ng-click="save()") #[i.fa.fa-floppy-o] зберегти
+        label(ng-if="current.admin")
+            span.label Вчитель?
+            input(type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="user.admin")
+
+    .input-row: .right-menu-item.button.button-green(ng-click="save()") #[i.fa.fa-floppy-o] зберегти

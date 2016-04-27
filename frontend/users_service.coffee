@@ -6,13 +6,18 @@ UsersService = ($http, $q) ->
 
     get: (id) ->
         if @current.id.toString() is id.toString()
-            $q (cb, _) => cb data: @current
+            user = {}
+            user[key] = @current[key] for key of @current
+            $q (cb, _) -> cb data: user
         else
             $http.get("/api/users/get/#{id}")
                 .then (res) ->
                     res.data
 
     save: (user) ->
+        if user.id.toString() is @current.id.toString()
+            @current[key] = user[key] for key of user
+
         $http.post('/api/users/save/', user)
             .then (res) ->
                 res.data

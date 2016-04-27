@@ -8,9 +8,10 @@ exports.save = (obj, cb) ->
         method = 'INSERT INTO'
         where = ''
 
+    obj.admin ?= no
     query """
-        #{method} users SET name = ? #{where}
-        """, [obj.name], cb
+        #{method} users SET name = ?, admin = ? #{where}
+        """, [obj.name, obj.admin], cb
 
 exports.getAll = (cb) ->
     query '''
