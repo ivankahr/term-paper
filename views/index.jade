@@ -8,12 +8,14 @@ html(lang="en" ng-app="app")
         title Система тестування
 
     body
-        .menu-wrapper
+        .menu-wrapper.initiable(ng-class="{show: true}")
             a.menu-item(href="/") #[i.fa.fa-user] користувачі
             a.menu-item(href="/tests/") #[i.fa.fa-tasks] тести
 
             .right-menu-item(ng-controller="UsersCtrl" ng-init='setCurrent(#{JSON.stringify(user)})')
-                b Привіт {{current.name}}
+                b Привіт {{current.name}} 
+                    i(ng-if="current.admin") (вчитель)
+                    i(ng-if="!current.admin") (студент)
                 button.button-blue(ng-click="logout()") #[i.fa.fa-sign-out] вийти
 
         .view(ng-view)

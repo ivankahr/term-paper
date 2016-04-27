@@ -15,7 +15,7 @@ UsersService = ($http, $q) ->
                     res.data
 
     save: (user) ->
-        if user.id.toString() is @current.id.toString()
+        if user.id?.toString() is @current.id.toString()
             @current[key] = user[key] for key of user
 
         $http.post('/api/users/save/', user)
