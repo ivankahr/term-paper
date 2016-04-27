@@ -1,10 +1,15 @@
 UsersCtrl = ($scope, UsersService) ->
     $scope.initialized = no
+    $scope.current = UsersService.current
 
     $scope.reload = ->
         UsersService.getAll().then (users) ->
             $scope.users = users.data
             $scope.initialized = yes
+
+    $scope.setCurrent = (user) ->
+        $scope.current = user
+        UsersService.current = user
 
     $scope.delete = (id) ->
         UsersService.delete(id).then (res) ->

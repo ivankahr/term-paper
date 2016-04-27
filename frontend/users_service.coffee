@@ -1,13 +1,16 @@
-UsersService = ($http) ->
+UsersService = ($http, $q) ->
     getAll: ->
         $http.get('/api/users/get/')
             .then (res) ->
                 res.data
 
     get: (id) ->
-        $http.get("/api/users/get/#{id}")
-            .then (res) ->
-                res.data
+        if @current.id.toString() is id.toString()
+            $q (cb, _) => cb data: @current
+        else
+            $http.get("/api/users/get/#{id}")
+                .then (res) ->
+                    res.data
 
     save: (user) ->
         $http.post('/api/users/save/', user)

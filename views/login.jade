@@ -8,9 +8,7 @@ html(lang="en")
         title Система тестування
 
     body
-        .view: form.form(action="/api/users/login/" method="POST"): .input-row
-            label.label Ім'я
-            input.input(type="text" name="name")
-
-            button.button-green(type="submit") #[i.fa.fa-sign-in] вхід
-
+        .view: .form
+            h1 Увійти як
+            for user in users
+                a.button-blue(href="/api/users/login/#{user.id}/")= user.name

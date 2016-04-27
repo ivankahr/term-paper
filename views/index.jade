@@ -12,8 +12,8 @@ html(lang="en" ng-app="app")
             a.menu-item(href="/") #[i.fa.fa-user] користувачі
             a.menu-item(href="/tests/") #[i.fa.fa-tasks] тести
 
-            .right-menu-item(ng-controller="UsersCtrl")
-                b Привіт #{user.name}
+            .right-menu-item(ng-controller="UsersCtrl" ng-init='setCurrent(#{JSON.stringify(user)})')
+                b Привіт {{current.name}}
                 button.button-blue(ng-click="logout()") #[i.fa.fa-sign-out] вийти
 
         .view(ng-view)

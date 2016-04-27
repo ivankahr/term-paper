@@ -24,12 +24,16 @@ app.use session
 app.use '/api', require './controllers'
 
 app.get '*', (req, res) ->
+    loginForm = ->
+        users.getAll (users) ->
+            res.render 'login', users: users
+
     if req.session.uid?
         users.get req.session.uid, (user) ->
             if user? then res.render 'index', user: user
             else
                 delete req.session.uid
-                res.render 'login'
-    else res.render 'login'
+                loginForm()
+    else loginForm()
 
 app.listen config.port, -> console.log 'Started on localhost:4444'

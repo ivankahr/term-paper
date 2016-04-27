@@ -24,8 +24,8 @@ router.get '/delete/:id/', (req, res) ->
     users.delete req.params.id, (result) ->
         res.send result
 
-router.post '/login/', (req, res) ->
-    users.getByName req.body.name, (user) ->
+router.get '/login/:id/', (req, res) ->
+    users.get req.params.id, (user) ->
         req.session.uid = user.id if user?
         res.redirect '/'
 
