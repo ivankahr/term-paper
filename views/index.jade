@@ -13,7 +13,7 @@ html(lang="en" ng-app="app")
             a.menu-item(href="/tests/") #[i.fa.fa-tasks] тести
 
             .right-menu-item(ng-controller="UsersCtrl" ng-init='setCurrent(#{JSON.stringify(user)})')
-                b Привіт {{current.name}} 
+                b {{current.name}} 
                     i(ng-if="current.admin") (вчитель)
                     i(ng-if="!current.admin") (студент)
                 button.button-blue(ng-click="logout()") #[i.fa.fa-sign-out] вийти

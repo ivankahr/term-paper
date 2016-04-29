@@ -8,7 +8,7 @@ html(lang="en")
         title Система тестування
 
     body
-        .view: .form
+        .view: .form.items-wrapper
             h1 Увійти як
             for user in users
-                a.button-blue(href="/api/users/login/#{user.id}/")= user.name
+                a.button-blue.item(href="/api/users/login/#{user.id}/")= user.name
